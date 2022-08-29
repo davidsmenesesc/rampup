@@ -12,6 +12,7 @@ const pool = mysql.createPool({
 })
 pool.query = util.promisify(pool.query)
 
+
 // Implement the movies API endpoint
 app.get('/movies', async function (req, res) {
   try {

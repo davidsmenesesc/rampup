@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16
 WORKDIR /movie-analyst-ui
 COPY package*.json ./
 RUN npm install
