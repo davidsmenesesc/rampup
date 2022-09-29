@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mvi_analyst_f
+  name: mvi-analyst-f
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: mvi_analyst_f
+      app: mvi-analyst-f
   template:
     metadata:
       labels:
-        app: mvi_analyst_f
+        app: mvi-analyst-f
     spec:
       containers:
         - name: app
@@ -21,10 +21,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mvi_analyst_f_service
+  name: mvi-analyst-f-service
 spec:
   selector:
-    app: mvi_analyst_f
+    app: mvi-analyst-f
   ports:
     - protocol: TCP
       port: 3030
