@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvi_analyst_b
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: mvi_analyst_b
+  template:
+    metadata:
+      labels:
+        app: mvi_analyst_b
+    spec:
+      containers:
+        - name: app
+          image: davidsmenesesc/rampup-back
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvi_analyst_b_service
+spec:
+  selector:
+    app: mvi_analyst_b
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

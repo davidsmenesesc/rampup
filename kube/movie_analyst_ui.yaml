@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvi_analyst_f
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: mvi_analyst_f
+  template:
+    metadata:
+      labels:
+        app: mvi_analyst_f
+    spec:
+      containers:
+        - name: app
+          image: davidsmenesesc/rampup-back
+          ports:
+            - containerPort: 3030
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvi_analyst_f_service
+spec:
+  selector:
+    app: mvi_analyst_f
+  ports:
+    - protocol: TCP
+      port: 3030
+      targetPort: 3030
