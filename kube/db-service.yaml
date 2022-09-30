@@ -1,4 +1,4 @@
-apiVersion: db/v1
+apiVersion: apps/v1
 kind: Service
 metadata:
   name: mvi_analyst_b_db
@@ -8,7 +8,7 @@ spec:
     port: 3306
     targetPort: 3306
 ---
-apiVersion: db/v1
+apiVersion: apps/v1
 kind: Endpoints
 metadata:
   name: mvi_analyst_b_db
