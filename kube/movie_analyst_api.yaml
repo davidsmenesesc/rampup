@@ -36,45 +36,45 @@ spec:
         - name: cloud-sql-proxy
         # It is recommended to use the latest version of the Cloud SQL proxy
         # Make sure to update on a regular schedule!
-        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0  # make sure the use the latest version
-        args:
-          # If connecting from a VPC-native GKE cluster, you can use the
-          # following flag to have the proxy connect over private IP
-          - "--private-ip"
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0  # make sure the use the latest version
+          args:
+            # If connecting from a VPC-native GKE cluster, you can use the
+            # following flag to have the proxy connect over private IP
+            - "--private-ip"
 
-          # Enable structured logging with LogEntry format:
-          - "--structured-logs"
+            # Enable structured logging with LogEntry format:
+            - "--structured-logs"
 
 
-          # Replace DB_PORT with the port the proxy should listen on
-          - "--port=3306"
-          - "movie-db"
+            # Replace DB_PORT with the port the proxy should listen on
+            - "--port=3306"
+            - "movie-db"
 
-        # [START cloud_sql_proxy_k8s_volume_mount]
-          # This flag specifies where the service account key can be found
-          - "/home/sanmeneses903/key.json"
-        securityContext:
-          # The default Cloud SQL proxy image runs as the
-          # "nonroot" user and group (uid: 65532) by default.
-          runAsNonRoot: true
-        volumeMounts:
-        - name: movie-volume-db
-          mountPath: /secrets/
-          readOnly: true
-          # [END cloud_sql_proxy_k8s_volume_mount]
-        # Resource configuration depends on an application's requirements. You
-        # should adjust the following values based on what your application
-        # needs. For details, see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-        resources:
-          requests:
-            # The proxy's memory use scales linearly with the number of active
-            # connections. Fewer open connections will use less memory. Adjust
-            # this value based on your application's requirements.
-            memory: "2Gi"
-            # The proxy's CPU use scales linearly with the amount of IO between
-            # the database and the application. Adjust this value based on your
-            # application's requirements.
-            cpu:    "1"
+          # [START cloud_sql_proxy_k8s_volume_mount]
+            # This flag specifies where the service account key can be found
+            - "/home/sanmeneses903/key.json"
+          securityContext:
+            # The default Cloud SQL proxy image runs as the
+            # "nonroot" user and group (uid: 65532) by default.
+            runAsNonRoot: true
+          volumeMounts:
+          - name: movie-volume-db
+            mountPath: /secrets/
+            readOnly: true
+            # [END cloud_sql_proxy_k8s_volume_mount]
+          # Resource configuration depends on an application's requirements. You
+          # should adjust the following values based on what your application
+          # needs. For details, see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+          resources:
+            requests:
+              # The proxy's memory use scales linearly with the number of active
+              # connections. Fewer open connections will use less memory. Adjust
+              # this value based on your application's requirements.
+              memory: "2Gi"
+              # The proxy's CPU use scales linearly with the amount of IO between
+              # the database and the application. Adjust this value based on your
+              # application's requirements.
+              cpu:    "1"
       # [START cloud_sql_proxy_k8s_volume_secret]
       volumes:
       - name: movie-volume-db
