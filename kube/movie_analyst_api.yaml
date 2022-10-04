@@ -17,7 +17,7 @@ spec:
           image: davidsmenesesc/rampup-back
           ports:
             - containerPort: 3000
-      env:
+       env:
         - name: DB_USER
           valueFrom:
             secretKeyRef:
