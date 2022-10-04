@@ -82,7 +82,7 @@ spec:
           secretName: sa-secret
       # [END cloud_sql_proxy_k8s_volume_secret]        
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Service
 metadata:
   name: mvi_analyst_b_service
