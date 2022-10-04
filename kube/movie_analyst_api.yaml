@@ -81,15 +81,4 @@ spec:
         secret:
           secretName: sa-secret
       # [END cloud_sql_proxy_k8s_volume_secret]        
----
-apiVersion: apps/v1
-kind: Service
-metadata:
-  name: mvi_analyst_b_service
-spec:
-  selector:
-    app: mvi_analyst_b
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
+
