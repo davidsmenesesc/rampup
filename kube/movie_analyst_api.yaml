@@ -16,16 +16,11 @@ spec:
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: secret/secret-movie
-              key: username
+              name: mysql-secret
+              key: mysql-root-username
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: secret/secret-movie
-              key: password
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: secret/secret-movie
-              key: database
+              name: mysql-secret
+              key: mysql-root-password
         
