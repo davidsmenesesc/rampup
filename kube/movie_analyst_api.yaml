@@ -30,10 +30,12 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-          volumes:
-            - name: volume-db
-              secret:
-                secretName: secret-datab
+      # [START cloud_sql_proxy_k8s_volume_secret]
+      volumes:
+      - name: volume-db
+        secret:
+          secretName: secret-datab
+      # [END cloud_sql_proxy_k8s_volume_secret]
 ---
 apiVersion: v1
 kind: Service
