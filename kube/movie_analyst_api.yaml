@@ -31,12 +31,12 @@ spec:
             - name: DB_NAME
               value: movie_db
         - name: cloud-sql-proxy
-          image: us.gcr.io/cloud-sql-connectors/cloud-sql-proxy:latest
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0
           args:
             - "--structured-logs"
             - "--port=3306"
             - "moviedb"
-            - "--credentials-file=/home/sanmeneses903/'~key.json'"
+            - "--credentials-file=/home/sanmeneses903/key.json"
           securityContext:
             runAsNonRoot: true
           volumeMounts:
@@ -50,7 +50,7 @@ spec:
       volumes:
         - name: volume-db
           secret:
-            secretName: secret-datab
+            secretName: secret-gcp
 ---
 apiVersion: v1
 kind: Service
