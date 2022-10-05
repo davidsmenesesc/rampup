@@ -7,6 +7,10 @@ spec:
   selector: 
     matchLabels:
       app: mvi-analyst-b
+  volumes:
+    - name: volume-db
+      secret:
+        secretName: secret-datab
   template:
     metadata:
       labels:
@@ -47,12 +51,6 @@ spec:
             requests:
               memory: "2Gi"
               cpu:    "1"
-      # [START cloud_sql_proxy_k8s_volume_secret]
-      volumes:
-      - name: volume-db
-        secret:
-          secretName: secret-datab
-      # [END cloud_sql_proxy_k8s_volume_secret]
 ---
 apiVersion: v1
 kind: Service
