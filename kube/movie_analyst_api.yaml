@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mvi_analyst_b
+  name: mvi-analyst-b
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: mvi_analyst_b
+      app: mvi-analyst-b
   template:
     metadata:
       labels:
-        app: mvi_analyst_b
+        app: mvi-analyst-b
     spec:
         containers:
         - name: app
