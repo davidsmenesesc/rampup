@@ -11,26 +11,25 @@ spec:
     metadata:
       labels:
         app: mvi_analyst_b
-    spec:    
-      env:
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-root-username
-        - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-root-password
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-name-db
-        - name: DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: mysql-host
+    spec:
+        containers:
+        - name: app
+          image: davidsmenesesc/rampup-front:v1
+          ports:
+            - containerPort: 3030    
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-username
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-password
+            - name: DB_NAME
+              value: movie_db
+            -name: DB_HOST
+              value: https://sqladmin.googleapis.com/sql/v1beta4/projects/rampup-david/instances/moviedb
         
