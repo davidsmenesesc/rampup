@@ -14,7 +14,7 @@ spec:
     spec:
         containers:
         - name: app
-          image: davidsmenesesc/rampup-front:v1
+          image: davidsmenesesc/rampup-back:v1
           ports:
             - containerPort: 3030    
           env:
@@ -32,4 +32,15 @@ spec:
               value: movie_db
             - name: DB_HOST
               value: https://sqladmin.googleapis.com/sql/v1beta4/projects/rampup-david/instances/moviedb
-        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvi-analyst-b-service
+spec:
+  selector:
+    app: mvi-analyst-b
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
