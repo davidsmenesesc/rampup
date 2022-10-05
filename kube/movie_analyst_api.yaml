@@ -30,8 +30,12 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-            - name: DB_HOST
-              value: 10.251.0.6
+            #- name: DB_HOST
+            #  value: 10.251.0.6
+            volumes:
+              - name: volume-db
+               secret:
+                secretName: secret-datab
 ---
 apiVersion: v1
 kind: Service
