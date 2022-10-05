@@ -7,10 +7,6 @@ spec:
   selector: 
     matchLabels:
       app: mvi-analyst-b
-  volumes:
-    - name: volume-db
-      secret:
-        secretName: secret-datab
   template:
     metadata:
       labels:
@@ -35,12 +31,12 @@ spec:
             - name: DB_NAME
               value: movie_db
         - name: cloud-sql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0 
+          image: us.gcr.io/cloud-sql-connectors/cloud-sql-proxy:latest
           args:
             - "--structured-logs"
             - "--port=3306"
             - "moviedb"
-            - "--credentials-file=/secrets/service_account.json"
+            - "--credentials-file=/home/sanmeneses903/'~key.json'"
           securityContext:
             runAsNonRoot: true
           volumeMounts:
@@ -51,6 +47,10 @@ spec:
             requests:
               memory: "2Gi"
               cpu:    "1"
+      volumes:
+        - name: volume-db
+          secret:
+            secretName: secret-datab
 ---
 apiVersion: v1
 kind: Service
