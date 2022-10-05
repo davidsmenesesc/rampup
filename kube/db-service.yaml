@@ -14,6 +14,12 @@ metadata:
   name: mvi_analyst_b_db
 subsets:
   addresses: 
-    url: projects/rampup-david/global/networks/movie-analyst-network
+    ip: 10.251.0.6
   ports:
     port: 3306
+
+  containers:
+        - name: app
+          image: davidsmenesesc/rampup-back
+          ports:
+            - containerPort: 3000
