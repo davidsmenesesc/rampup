@@ -30,6 +30,6 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-            -name: DB_HOST
+            - name: DB_HOST
               value: https://sqladmin.googleapis.com/sql/v1beta4/projects/rampup-david/instances/moviedb
         
