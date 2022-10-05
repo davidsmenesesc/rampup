@@ -12,7 +12,7 @@ spec:
       labels:
         app: mvi-analyst-b
     spec:
-        containers:
+      containers:
         - name: app
           image: davidsmenesesc/rampup-back:v1
           ports:
@@ -30,23 +30,23 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-      - name: cloud-sql-proxy
-        image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0 
-        args:
-          - "--structured-logs"
-          - "--port=3306"
-          - "moviedb"
-          - "--credentials-file=/secrets/service_account.json"
-        securityContext:
-          runAsNonRoot: true
-        volumeMounts:
-        - name: volume-db
-          mountPath: /secrets/
-          readOnly: true
-        resources:
-          requests:
-            memory: "2Gi"
-            cpu:    "1"
+        - name: cloud-sql-proxy
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0 
+          args:
+            - "--structured-logs"
+            - "--port=3306"
+            - "moviedb"
+            - "--credentials-file=/secrets/service_account.json"
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+          - name: volume-db
+            mountPath: /secrets/
+            readOnly: true
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu:    "1"
       # [START cloud_sql_proxy_k8s_volume_secret]
       volumes:
       - name: volume-db
