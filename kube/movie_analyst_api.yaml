@@ -31,9 +31,9 @@ spec:
             - name: DB_NAME
               value: movie_db
         - name: cloud-sql-proxy
-          image: gcr.io/cloudsql-docker/gce-proxy:1.32.0
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0
           args:
-            - "--structured-logs"
+            #- "--structured-logs"
             - "--port=3306"
             - "moviedb"
             - "--credentials-file=/home/sanmeneses903/key.json"
