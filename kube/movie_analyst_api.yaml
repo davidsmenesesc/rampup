@@ -38,14 +38,14 @@ spec:
             - "moviedb"
             - "--credentials-file=/home/sanmeneses903/key.json"
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
           volumeMounts:
           - name: volume-db
             mountPath: /secrets/
-            readOnly: true
+            readOnly: false
           resources:
             requests:
-              memory: "2Gi"
+              memory: "1Gi"
               cpu:    "1"
       volumes:
         - name: volume-db
