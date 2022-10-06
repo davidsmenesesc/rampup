@@ -30,14 +30,12 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-            - name: DB_HOST
-              value: 127.0.0.1
         - name: cloud-sql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy@sha256:4f38e32bd902caa15167b9ef79c9959cc0906884d38111a5771963489c060815
           args:
-            #- "--structured-logs"
+            - "--structured-logs"
             - "--port=3306"
-            - "moviedb"
+            - "rampup-david:us-east1:moviedb"
             - "--credentials-file=/home/sanmeneses903/key.json"
           securityContext:
             runAsNonRoot: true
