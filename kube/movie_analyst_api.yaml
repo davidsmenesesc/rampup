@@ -13,7 +13,7 @@ spec:
         app: mvi-analyst-b
     spec:
       containers:
-        - name: app
+        - name: app-b
           image: davidsmenesesc/rampup-back:v1
           ports:
             - containerPort: 3030    
