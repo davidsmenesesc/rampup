@@ -30,6 +30,8 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
+            - name: DB_HOST
+              value: 127.0.0.1
         - name: cloud-sql-proxy
           image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0
           args:
