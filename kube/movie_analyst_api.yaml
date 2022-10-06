@@ -30,8 +30,27 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-            - name: DB_HOST
-              value: 10.251.0.6
+        - name: cloud-sql-proxy
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0
+          args:
+            - "--structured-logs"
+            - "--port=3306"
+            - "moviedb"
+            - "--credentials-file=/home/sanmeneses903/key.json"
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+          - name: volume-db
+            mountPath: /secrets/
+            readOnly: true
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu:    "1"
+      volumes:
+        - name: volume-db
+          secret:
+            secretName: secret-gcp
 ---
 apiVersion: v1
 kind: Service
