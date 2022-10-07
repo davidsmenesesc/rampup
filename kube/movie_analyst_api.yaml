@@ -36,7 +36,7 @@ spec:
             - "--private-ip"
             - "--structured-logs"
             - "--port=3306"
-            - "rampup-david:us-east1:moviedb"
+            - "moviedb"
             - "--credentials-file=/secrets/key.json"
           securityContext:
             runAsNonRoot: true
