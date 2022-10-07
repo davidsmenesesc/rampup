@@ -23,12 +23,12 @@ spec:
             runAsNonRoot: true
         volumeMounts:
         - name: volume-db
-            mountPath: /secrets/
-            readOnly: true
-          resources:
-            requests:
-              memory: "1Gi"
-              cpu:    "1"
+          mountPath: /secrets/
+          readOnly: true
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu:    "1"
       volumes:
       - name: volume-db
         secret:
