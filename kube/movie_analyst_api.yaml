@@ -16,7 +16,7 @@ spec:
         - name: app-b
           image: davidsmenesesc/rampup-back:v1
           ports:
-            - containerPort: 3030    
+            - containerPort: 3000    
           env:
             - name: DB_USER
               valueFrom:
