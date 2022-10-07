@@ -12,7 +12,7 @@ spec:
         app: cldsql
     spec:
       containers:        
-        - name: cloud-sql-proxy
+      - name: cloud-sql-proxy
         image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0.preview.0  
         args:
           - "--structured-logs"
