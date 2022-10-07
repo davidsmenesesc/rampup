@@ -37,7 +37,7 @@ spec:
             - "--structured-logs"
             - "--port=3306"
             - "rampup-david:us-east1:moviedb"
-            - "--credentials-file=/home/sanmeneses903/key.json"
+            - "--credentials-file=/secrets/key.json"
           securityContext:
             runAsNonRoot: true
           volumeMounts:
