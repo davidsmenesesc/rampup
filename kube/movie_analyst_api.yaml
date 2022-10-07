@@ -37,7 +37,7 @@ spec:
             - "--structured-logs"
             - "--port=3306"
             - "moviedb"
-            - "--credentials-file=/secrets/key.json"
+            - "--credentials-file=/home/sanmeneses903/key.json"
           securityContext:
             runAsNonRoot: true
           volumeMounts:
