@@ -13,7 +13,7 @@ spec:
     spec:
       containers:        
         - name: cloud-sql-proxy
-          image: gcr.io/cloudsql-docker/gce-proxy:1.28.0
+          image: gcr.io/cloudsql-docker/gce-proxy@sha256:5902f579e1d004b6452526433aa7b38be203c030b525c4f1ca7da6715bee8f9e
           command:
               - "/cloud_sql_proxy"
               - "-ip_address_types=PRIVATE"
