@@ -13,25 +13,25 @@ spec:
     spec:
       containers:        
         - name: cloud-sql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy@sha256:4f38e32bd902caa15167b9ef79c9959cc0906884d38111a5771963489c060815
-          args:
-            - "--private-ip"
-            - "--structured-logs"
-            - "--port=3306"
-            - "moviedb"
-            - "--credentials-file=/secrets/key.json"
+          image: gcr.io/cloudsql-docker/gce-proxy:1.28.0
+          command:
+              - "/cloud_sql_proxy"
+              - "-ip_address_types=PRIVATE"
+              - "-log_debug_stdout"
+              - "-instances=rampup-david:us-east1:moviedb=tcp:3306"
+              - "-credential_file=/secrets/service_account.json"
           securityContext:
             runAsNonRoot: true
           volumeMounts:
           - name: volume-db
             mountPath: /secrets/
-            readOnly: false
+            readOnly: true
           resources:
             requests:
               memory: "1Gi"
               cpu:    "1"
-      volumes:
+        volumes:
         - name: volume-db
           secret:
-            secretName: secret-gcp
+            secretName: secret-proxy
 
