@@ -19,10 +19,10 @@ spec:
           - "--port=3306"
           - "moviedb"
           - "--credentials-file=/secrets/service_account.json"
-          securityContext:
+        securityContext:
             runAsNonRoot: true
-          volumeMounts:
-          - name: volume-db
+        volumeMounts:
+        - name: volume-db
             mountPath: /secrets/
             readOnly: true
           resources:
