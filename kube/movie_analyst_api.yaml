@@ -51,7 +51,7 @@ spec:
       volumes:
       - name: volume-db
         secret:
-          secretName: secret-proxy
+          secretName: secret-gcp
 ---
 apiVersion: v1
 kind: Service
