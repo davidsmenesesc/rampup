@@ -7,5 +7,5 @@ spec:
     app: mvi-analyst-f
   ports:
     - port: 3030
-      targetPort: 30000
+      targetPort: 3030
   type: LoadBalancer
