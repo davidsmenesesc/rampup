@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress-mvi
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -10,7 +10,11 @@ spec:
   - host: v1.peladonerd.local
     http:
       paths:
+      - path: /
+        pathType: Exact
         backend:
           service:
-            servicename: mvi-analyst-f-service
-            serviceport: 80
+            name: mvi-analyst-f-service
+            port:
+              number: 3030
+        
