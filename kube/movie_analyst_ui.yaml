@@ -28,9 +28,7 @@ metadata:
 spec:
   selector:
     app: mvi-analyst-f
-  type: NodePort
   ports:
     - protocol: TCP
       port: 3030
       targetPort: 3030
-      nodePort: 30000
