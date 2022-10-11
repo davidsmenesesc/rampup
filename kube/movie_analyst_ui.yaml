@@ -7,7 +7,6 @@ spec:
   selector: 
     matchLabels:
       app: mvi-analyst-f
-  type: NodePort
   template:
     metadata:
       labels:
@@ -29,7 +28,9 @@ metadata:
 spec:
   selector:
     app: mvi-analyst-f
+  type: NodePort
   ports:
     - protocol: TCP
       port: 3030
       targetPort: 3030
+      nodePort: 3030
