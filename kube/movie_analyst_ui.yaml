@@ -7,6 +7,7 @@ spec:
   selector: 
     matchLabels:
       app: mvi-analyst-f
+  type: NodePort
   template:
     metadata:
       labels:
