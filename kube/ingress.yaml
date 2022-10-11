@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: ingress-mvi-analyst
 spec:
-    defaultbackend:
-        service:
-            name: mvi-analyst-f-service
-            port:
-              number: 3030
+  defaultbackend:
+     service:
+      name: mvi-analyst-f-service
+      port:
+        number: 3030
   ingressClassName: nginx
