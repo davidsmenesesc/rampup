@@ -7,7 +7,6 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: mviapp.local
     http:
       paths:
       - path: /
