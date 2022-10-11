@@ -26,9 +26,12 @@ kind: Service
 metadata:
   name: mvi-analyst-f-service
 spec:
+  type: NodePort
   selector:
     app: mvi-analyst-f
   ports:
     - protocol: TCP
       port: 3030
       targetPort: 3030
+      nodePort: 30001
+      name: http
