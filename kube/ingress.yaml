@@ -1,11 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-mvi-analyst
+  name: basic-ingress
 spec:
-  defaultbackend:
-     service:
+  defaultBackend:
+    service:
       name: mvi-analyst-f-service
       port:
-        number: 3030
-  ingressClassName: nginx
+        number: 8080
