@@ -1,15 +1,17 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-movie
+  name: ingress-mvi
 spec:
-  ingressClassName: nginx
   rules:
   - host: mviapp.com
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: mvi-analyst-f-service
-          servicePort: 3030
----
+          service:
+            name: mvi-analyst-f-service
+            port:
+              number: 80
+  ingressClassName: nginx
