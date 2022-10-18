@@ -20,8 +20,10 @@ stages {
       steps{
         script {
         dir('rampup/movie-analyst-api') {
-                //dockerBack = docker.build dockerimagebackend
-                dockerBack = sh'docker build -t davidsmenesesc/rampup-back .'
+                sh'ls'
+                sh'pwd'
+                dockerBack = docker.build dockerimagebackend
+                //dockerBack = sh'docker build -t davidsmenesesc/rampup-back .'
             }   
         dir('rampup/movie-analyst-ui') {
                 dockerFront = docker.build dockerimagefrontend
