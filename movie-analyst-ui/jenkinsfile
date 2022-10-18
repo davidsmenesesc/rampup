@@ -20,11 +20,7 @@ stages {
       steps{
         script {
         dir('movie-analyst-api') {
-                sh'ls'
-                sh'pwd'
-                sh'ls'
                 dockerBack = docker.build dockerimagebackend
-                //dockerBack = sh'docker build -t davidsmenesesc/rampup-back .'
             }   
         dir('movie-analyst-ui') {
                 dockerFront = docker.build dockerimagefrontend
@@ -32,5 +28,19 @@ stages {
         }
       }
     }
+    stage('Pushing Image') {
+      environment {
+               registryCredential = 'registryCredential'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+            dockerBack.push("latest")
+            dockerFront.push("latest")
+          }
+        }
+      }
+    }
+
  }
 }
