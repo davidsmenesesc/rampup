@@ -2,8 +2,9 @@ pipeline {
 
   environment {
     dockerimagebackend = "davidsmenesesc/rampup-back"
-    dockerImage = ""
-    dockerimagefrontend = "movie-analyst-ui"
+    dockerBack= ""
+    dockerFront= ""
+    dockerimagefrontend = "davidsmenesesc/rampup-front"
   }
 
 agent any
@@ -20,8 +21,10 @@ stages {
         script {
         dir('rampup/movie-analyst-api') {
                 dockerBack = docker.build dockerimagebackend
-            }            
-
+            }   
+        dir('rampup/movie-analyst-ui') {
+                dockerFront = docker.build dockerimagefrontend
+            }               
         }
       }
     }
