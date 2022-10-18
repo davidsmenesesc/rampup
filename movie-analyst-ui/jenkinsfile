@@ -19,10 +19,10 @@ stages {
     stage('Build image') {
       steps{
         script {
-        dir('rampup/movie-analyst-api') {
+        dir('rampup/movie-analyst-api/Dockerfile') {
                 dockerBack = docker.build dockerimagebackend
             }   
-        dir('rampup/movie-analyst-ui') {
+        dir('rampup/movie-analyst-ui/Dockerfile') {
                 dockerFront = docker.build dockerimagefrontend
             }               
         }
