@@ -1,0 +1,14 @@
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/davidsmenesesc/rampup.git'
+      }
+    }  
+    stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+        dir('kube') {
+                kubernetesDeploy(configs: "movie_analyst_ui.yml", kubeconfigId: "kubernetes")
+            }    
+        }
+      }
+    }
