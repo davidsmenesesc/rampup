@@ -19,7 +19,7 @@ stages {
     stage('Build image') {
       steps{
         script {
-        dir('rampup/movie-analyst-api') {
+        dir('rampup') {
                 sh'ls'
                 sh'pwd'
                 sh'ls'
