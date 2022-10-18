@@ -10,7 +10,8 @@ stages {
       steps {
         script {
         dir('kube') {
-                kubernetesDeploy(configs: "movie_analyst_ui.yml", kubeconfigId: "kubernetes")
+                sh'ls'
+                kubernetesDeploy(configs: "movie_analyst_ui.yaml", kubeconfigId: "kubernetes")
             }    
         }
       }
