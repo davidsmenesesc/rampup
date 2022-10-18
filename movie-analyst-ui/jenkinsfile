@@ -22,6 +22,7 @@ stages {
         dir('rampup/movie-analyst-api') {
                 sh'ls'
                 sh'pwd'
+                sh'ls'
                 dockerBack = docker.build dockerimagebackend
                 //dockerBack = sh'docker build -t davidsmenesesc/rampup-back .'
             }   
