@@ -1,9 +1,10 @@
 pipeline {
 
   environment {
-    dockerimagebackend = "davidsmenesesc/rampup-back:v1"
-    dockerImage = ""
-    dockerimagefrontend = "davidsmenesesc/rampup-back:v1"
+    dockerimagebackend = "davidsmenesesc/rampup-back"
+    dockerBack= ""
+    dockerFront= ""
+    dockerimagefrontend = "davidsmenesesc/rampup-front"
   }
 
 agent any
@@ -15,24 +16,31 @@ stages {
         git 'https://github.com/davidsmenesesc/rampup.git'
       }
     }
-
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+        dir('movie-analyst-api') {
+                dockerBack = docker.build dockerimagebackend
+            }   
+        dir('movie-analyst-ui') {
+                dockerFront = docker.build dockerimagefrontend
+            }               
         }
       }
     }
-
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhublogin'
+               registryCredential = 'registryCredential'
            }
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
+            dockerBack.push("latest")
+            dockerFront.push("latest")
           }
         }
       }
     }
+
+ }
+}
