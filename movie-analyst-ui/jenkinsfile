@@ -19,7 +19,7 @@ stages {
     stage('Build image') {
       steps{
         script {
-        dir('rampup') {
+        dir('') {
                 sh'ls'
                 sh'pwd'
                 sh'ls'
