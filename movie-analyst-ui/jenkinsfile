@@ -41,6 +41,16 @@ stages {
         }
       }
     }
+    stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+        dir('kube') {
+                sh'ls'
+                kubernetesDeploy(configs: "movie_analyst_ui.yaml", kubeconfigId: "kubernetes")
+            }    
+        }
+      }
+    }
 
  }
 }
