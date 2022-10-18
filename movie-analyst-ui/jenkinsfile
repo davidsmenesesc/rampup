@@ -1,9 +1,9 @@
 pipeline {
 
   environment {
-    dockerimagebackend = "movie-analyst-api/Dockerfile"
+    dockerimagebackend = "movie-analyst-api"
     dockerImage = ""
-    dockerimagefrontend = "movie-analyst-ui/Dockerfile"
+    dockerimagefrontend = "movie-analyst-ui"
   }
 
 agent any
@@ -15,7 +15,6 @@ stages {
         git 'https://github.com/davidsmenesesc/rampup.git'
       }
     }
-
     stage('Build image') {
       steps{
         script {
