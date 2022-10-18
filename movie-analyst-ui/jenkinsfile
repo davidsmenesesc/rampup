@@ -19,7 +19,8 @@ stages {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+          dockerBack = docker.build dockerimagebackend
+          dockerFront = docker.build dockerimagefrontend
         }
       }
     }
