@@ -3,7 +3,7 @@ pipeline {
   environment {
     dockerimagebackend = "davidsmenesesc/rampup-back:v1"
     dockerImage = ""
-    dockerimagefrontend = "davidsmenesesc/rampup-back:v1"
+    dockerimagefrontend = "davidsmenesesc/rampup-front:v1"
   }
 
 agent any
@@ -20,19 +20,6 @@ stages {
       steps{
         script {
           dockerImage = docker.build dockerimagename
-        }
-      }
-    }
-
-    stage('Pushing Image') {
-      environment {
-               registryCredential = 'dockerhublogin'
-           }
-      steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
-          }
         }
       }
     }
