@@ -1,9 +1,9 @@
 pipeline {
 
   environment {
-    dockerimagebackend = "davidsmenesesc/rampup-back:v1"
+    dockerimagebackend = "movie-analyst-api/Dockerfile"
     dockerImage = ""
-    dockerimagefrontend = "davidsmenesesc/rampup-front:v1"
+    dockerimagefrontend = "movie-analyst-ui/Dockerfile"
   }
 
 agent any
