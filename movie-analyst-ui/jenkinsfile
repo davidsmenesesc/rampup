@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagebackend = "movie-analyst-api"
+    dockerimagebackend = "davidsmenesesc/rampup-back"
     dockerImage = ""
     dockerimagefrontend = "movie-analyst-ui"
   }
@@ -18,8 +18,10 @@ stages {
     stage('Build image') {
       steps{
         script {
-          dockerBack = docker.build dockerimagebackend
-          dockerFront = docker.build dockerimagefrontend
+        dir('rampup/movie-analyst-api') {
+                dockerBack = docker.build dockerimagebackend
+            }            
+
         }
       }
     }
