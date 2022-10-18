@@ -19,14 +19,14 @@ stages {
     stage('Build image') {
       steps{
         script {
-        dir('') {
+        dir('movie-analyst-api') {
                 sh'ls'
                 sh'pwd'
                 sh'ls'
                 dockerBack = docker.build dockerimagebackend
                 //dockerBack = sh'docker build -t davidsmenesesc/rampup-back .'
             }   
-        dir('rampup/movie-analyst-ui') {
+        dir('movie-analyst-ui') {
                 dockerFront = docker.build dockerimagefrontend
             }               
         }
