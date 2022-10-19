@@ -46,8 +46,8 @@ stages {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerBack.push("v"+$BUILD_NUMBER)
-            dockerFront.push("v"+$BUILD_NUMBER)
+            dockerBack.push("v$BUILD_NUMBER")
+            dockerFront.push("v$BUILD_NUMBER")
           }
         }
       }
