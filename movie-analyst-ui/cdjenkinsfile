@@ -13,7 +13,7 @@ stages {
                 // sh 'ls'
                 // kubernetesDeploy(configs: "movie_analyst_ui.yaml", kubeconfigId: "kubernetes")
                 // kubernetesDeploy(configs: "movie_analyst_api.yaml", kubeconfigId: "kubernetes")
-            withKubeConfig([credentialsId: 'kubernetes']) {
+            withKubeConfig([credentialsId: 'kube-config']) {
                     sh 'kubectl apply -f movie_analyst_ui.yaml'
                     sh 'kubectl apply -f movie_analyst_api.yaml'
                }
