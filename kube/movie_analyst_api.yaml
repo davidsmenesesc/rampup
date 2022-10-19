@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app-b
-          image: davidsmenesesc/rampup-back:latest
+          image: davidsmenesesc/rampup-back:v2
           ports:
             - containerPort: 3000    
           env:

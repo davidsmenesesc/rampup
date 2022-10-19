@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: davidsmenesesc/rampup-front:latest
+          image: davidsmenesesc/rampup-front:v2
           ports:
             - containerPort: 3030
           env:
