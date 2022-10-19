@@ -21,6 +21,7 @@ stages {
         script {
         dir('movie-analyst-api/test') {
                 sh 'ls'
+                sh 'npm install'
                 sh 'npm test'
             }             
         }
