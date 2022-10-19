@@ -16,6 +16,16 @@ stages {
         git 'https://github.com/davidsmenesesc/rampup.git'
       }
     }
+    stage('Test') {
+      steps{
+        script {
+        dir('movie-analyst-api/test') {
+                sh 'ls'
+                sh 'npm test'
+            }             
+        }
+      }
+    }
     stage('Build image') {
       steps{
         script {
