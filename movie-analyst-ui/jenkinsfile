@@ -16,6 +16,17 @@ stages {
         git 'https://github.com/davidsmenesesc/rampup.git'
       }
     }
+    stage('Test') {
+      steps{
+        script {
+        dir('movie-analyst-api/test') {
+                sh 'ls'
+                sh 'npm install'
+                sh 'npm test'
+            }             
+        }
+      }
+    }
     stage('Build image') {
       steps{
         script {
@@ -35,12 +46,11 @@ stages {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerBack.push("latest")
-            dockerFront.push("latest")
+            dockerBack.push("v$BUILD_NUMBER")
+            dockerFront.push("v$BUILD_NUMBER")
           }
         }
       }
     }
-
  }
 }
