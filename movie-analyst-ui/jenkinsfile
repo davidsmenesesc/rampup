@@ -40,8 +40,9 @@ stages {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerBack.push("${GIT_REVISION,length=6}")
-            dockerFront.push("${GIT_REVISION,length=6}")
+            sh 'env | sort'
+            dockerBack.push("$GIT_COMMIT")
+            dockerFront.push("$GIT_COMMIT")
           }
         }
       }
