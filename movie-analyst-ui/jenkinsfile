@@ -42,8 +42,8 @@ stages {
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
             sh 'env | sort'
-            dockerBack.push(SHOR-SHA)
-            dockerFront.push(SHOR-SHA)
+            dockerBack.push(SHOR_SHA)
+            dockerFront.push(SHOR_SHA)
           }
         }
       }
