@@ -41,8 +41,8 @@ stages {
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
             sh 'env | sort'
-            dockerBack.push("$GIT_COMMIT")
-            dockerFront.push("$GIT_COMMIT")
+            dockerBack.push("${GIT_COMMIT[0..7]}")
+            dockerFront.push("${GIT_COMMIT[0..7]}")
           }
         }
       }
