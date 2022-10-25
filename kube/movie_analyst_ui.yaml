@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: davidsmenesesc/rampup-front:${GIT_COMMIT[0..7]}
+          image: davidsmenesesc/rampup-front:$SHOR-SHA
           ports:
             - containerPort: 3030
           env:

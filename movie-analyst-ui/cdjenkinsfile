@@ -1,6 +1,6 @@
 pipeline{
 environment {
-    shor-sha="${GIT_COMMIT[0..7]}"
+    SHOR-SHA=${GIT_COMMIT[0..7]}
   }
 agent any
 stages {
