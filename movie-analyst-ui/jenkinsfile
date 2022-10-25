@@ -5,6 +5,7 @@ pipeline {
     dockerBack= ""
     dockerFront= ""
     dockerimagefrontend = "davidsmenesesc/rampup-front"
+    shor-sha="${GIT_COMMIT[0..7]}"
   }
 
 agent any
@@ -41,8 +42,8 @@ stages {
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
             sh 'env | sort'
-            dockerBack.push("${GIT_COMMIT[0..7]}")
-            dockerFront.push("${GIT_COMMIT[0..7]}")
+            dockerBack.push(shor-sha)
+            dockerFront.push(shor-sha)
           }
         }
       }
