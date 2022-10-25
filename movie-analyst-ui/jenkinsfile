@@ -5,7 +5,7 @@ pipeline {
     dockerBack= ""
     dockerFront= ""
     dockerimagefrontend = "davidsmenesesc/rampup-front"
-    SHOR-SHA=${GIT_COMMIT[0..7]}
+    SHOR_SHA= GIT_COMMIT.take(7)
   }
 
 agent any
