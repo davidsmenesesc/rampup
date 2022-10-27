@@ -32,30 +32,28 @@ spec:
                   key: mysql-root-password
             - name: DB_NAME
               value: movie_db
-            - name: DB_HOST
-              value: "10.251.0.6"
-      #   - name: cloud-sql-proxy
-      #     image: gcr.io/cloudsql-docker/gce-proxy:1.28.0
-      #     command:
-      #         - "/cloud_sql_proxy"
-      #         - "-ip_address_types=PRIVATE"
-      #         - "-log_debug_stdout"
-      #         - "-instances=rampup-david:us-east1:moviedb=tcp:3306"
-      #         - "-credential_file=/secrets/service_account.json"
-      #     securityContext:
-      #       runAsNonRoot: true
-      #     volumeMounts:
-      #     - name: volume-db
-      #       mountPath: /secrets/
-      #       readOnly: true
-      #     resources:
-      #       requests:
-      #         memory: "1Gi"
-      #         cpu:    "1"
-      # volumes:
-      # - name: volume-db
-      #   secret:
-      #     secretName: secret-gcp
+        - name: cloud-sql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.28.0
+          command:
+              - "/cloud_sql_proxy"
+              - "-ip_address_types=PRIVATE"
+              - "-log_debug_stdout"
+              - "-instances=rampup-david:us-east1:moviedb=tcp:3306"
+              - "-credential_file=/secrets/service_account.json"
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+          - name: volume-db
+            mountPath: /secrets/
+            readOnly: true
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu:    "1"
+      volumes:
+      - name: volume-db
+        secret:
+          secretName: secret-gcp
 ---
 apiVersion: v1
 kind: Service
