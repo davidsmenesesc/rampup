@@ -12,6 +12,8 @@ spec:
       labels:
         app: mvi-analyst-b
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: node-worker-c
       containers:
         - name: app-b
           image: davidsmenesesc/rampup-back:$SHOR_SHA
