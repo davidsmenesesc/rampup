@@ -13,7 +13,7 @@ spec:
         app: mvi-analyst-b
     spec:
       nodeSelector:
-        kubernetes.io/hostname: node-worker-c
+        kubernetes.io/hostname: node-worker-b
       containers:
         - name: app-b
           image: davidsmenesesc/rampup-back:$SHOR_SHA
