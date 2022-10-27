@@ -19,7 +19,7 @@ spec:
             - containerPort: 3030
           env:
             - name: BACKEND_URL
-              value: mvi-analyst-b-service.default.svc.cluster.local
+              value: mvi-analyst-b-service.default.svc-cluster.local
 ---
 apiVersion: v1
 kind: Service
